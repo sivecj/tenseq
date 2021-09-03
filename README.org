@@ -1,7 +1,16 @@
 * teensy-seq
 Teensy 3 (LC) sequencer
 
-Very early development.
+Very early development. It currently features a basic sequencer that is able to
+record a note sequence up to 32 steps. It plays the sequence back automatically.
+
+Most settings can be set in the lines with ~#define~.
+
+*Summary:*
+- Enter MIDI notes via a USB MIDI input channel (/default: MIDI USB channel 2/).
+- Output MIDI notes to a USB MIDI output channel (/default: MIDI USB channel 1/).
+- Input an empty note either with a button (/default: Pin 2/) or via the MIDI
+  note 0.
 
 ** Dependencies
 This project requires dependencies which may or may not be available in the
