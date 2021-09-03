@@ -1,4 +1,4 @@
-* teensy-seq
+* tenseq
 Teensy 3 (LC) sequencer. Written in Arduino.
 
 Very early development. It currently features a basic sequencer that is able to

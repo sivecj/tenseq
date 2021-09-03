@@ -1,5 +1,5 @@
 /*
- * Teensy LC optimized sequencer
+ * tenseq: Teensy sequencer
  * Notes:
  *  - Midi note '0' is used as "no note"
  */
