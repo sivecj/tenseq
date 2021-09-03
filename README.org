@@ -1,0 +1,10 @@
+* teensy-seq
+Teensy 3 (LC) sequencer
+
+Very early development.
+
+** Dependencies
+This project requires dependencies which may or may not be available in the
+Arduino Libary Manager:
+
+- *uClock* for BPM clock generation: [[https://github.com/midilab/uClock][GitHub: midilab/uClock]].
