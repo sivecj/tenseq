@@ -2,7 +2,7 @@
 
 Sequencer::Sequencer()
 {
-    Sequencer::sequence_size = MAX_SEQUENCE_SIZE;
+    Sequencer::sequence_step_size = MAX_SEQUENCE_SIZE;
     note_sequence_coll_size = 0;
     sequence_step = 0;
 }
@@ -12,17 +12,17 @@ byte Sequencer::get_note_sequence_coll_size()
 	return note_sequence_coll_size;
 }
 
-void Sequencer::set_sequence_size(const byte& sequence_size)
+void Sequencer::set_sequence_step_size(const byte& sequence_step_size)
 {
-    if (sequence_size <= MAX_SEQUENCE_SIZE)
-        Sequencer::sequence_size = sequence_size;
+    if (sequence_step_size <= MAX_SEQUENCE_SIZE)
+        Sequencer::sequence_step_size = sequence_step_size;
 }
 
 void Sequencer::add_sequence_note(const midi_note& note)
 {
 	byte size = get_note_sequence_coll_size();
 
-	if (size < sequence_size) {
+	if (size < sequence_step_size) {
 		note_sequence_coll[size] = note;
 		note_sequence_coll_size++;
 	}

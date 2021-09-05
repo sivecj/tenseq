@@ -23,7 +23,7 @@ void setup()
     delay(1000);
     Serial.begin(SERIAL_RATE);
 
-    seq.set_sequence_size(DEFAULT_STEP_SIZE-1);
+    seq.set_sequence_step_size(DEFAULT_STEP_SIZE-1);
 
     hardware_init();
     midi_init();
