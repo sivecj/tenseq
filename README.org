@@ -5,11 +5,15 @@ Very early development. It currently features a basic sequencer that is able to
 record a note sequence up to 64 steps (default is set to 32). It plays the
 sequence back automatically.
 
+It also now features a drum sequencer where notes can be entered on the run. The
+sequence can be set to a fixed step length (up to 64 steps...) and is looped
+indefinitely.
+
 Most settings can be set in the lines with ~#define~.
 
 *Summary:*
-- Enter MIDI notes via a USB MIDI input channel (/default: MIDI USB channel 2/).
-- Output MIDI notes to a USB MIDI output channel (/default: MIDI USB channel 1/).
+- Enter MIDI notes via a USB MIDI input channel.
+- Output MIDI notes to a USB MIDI output channel.
 - Input an empty note either with a button (/default: Pin 2/) or via the MIDI
   note 0.
 

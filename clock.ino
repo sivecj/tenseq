@@ -12,7 +12,7 @@ void clock_run_16_ppqn(uint32_t *tick)
 {
     seq.run_sequence_step();
     midi_send_sequence_note();
-    note_off_millis = (1000/((DEFAULT_BPM/60)*4))*(GATE_LENGTH/100.0) + tMillis;
+    note_off_millis = (1000.0/((DEFAULT_BPM/60.0)*4.0))*(GATE_LENGTH/100.0) + tMillis;
 }
 
 void clock_init()

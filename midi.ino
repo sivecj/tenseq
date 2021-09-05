@@ -2,6 +2,7 @@
  * MIDI stuff
  */
 
+static byte current_note;
 static bool is_note_active;
 
 void midi_cb_note_on(byte channel, byte note, byte velocity)
@@ -11,7 +12,13 @@ void midi_cb_note_on(byte channel, byte note, byte velocity)
         Sequencer::midi_note n;
         n.note = note;
         n.velocity = velocity;
+
+#ifdef SEQ_MODE
         seq.add_sequence_note(n);
+#endif
+#ifdef DRUM_MODE
+        seq.set_sequence_note(n);
+#endif
     }
 }
 
@@ -24,6 +31,7 @@ void midi_send_sequence_note()
 {
     Sequencer::midi_note n = seq.get_sequence_note();
     usbMIDI.sendNoteOn(n.note, n.velocity, MIDI_OUTPUT_DEFAULT_CHANNEL);
+    current_note = n.note;
 }
 
 /* Execute MIDI related stuff on every loop() */
@@ -37,10 +45,10 @@ void midi_run_procedure()
         midi_cb_note_off(MIDI_INPUT_DEFAULT_CHANNEL, 0, 0);
     }
 
-    // Check
+    // Check if the noteOff needs to be called
     if (note_off_millis != 0 && tMillis >= note_off_millis) {
-        Sequencer::midi_note n = seq.get_sequence_note();
-        usbMIDI.sendNoteOff(n.note, 0, MIDI_OUTPUT_DEFAULT_CHANNEL);
+        usbMIDI.sendNoteOff(current_note, 0, MIDI_OUTPUT_DEFAULT_CHANNEL);
+        current_note = 0;
         note_off_millis = 0;
     }
 }
@@ -48,6 +56,7 @@ void midi_run_procedure()
 void midi_init()
 {
     is_note_active = false;
+    current_note = 0;
 
     // functions for usbMIDI...
     usbMIDI.setHandleNoteOn(midi_cb_note_on);
